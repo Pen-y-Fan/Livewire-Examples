@@ -27,11 +27,11 @@ class ContactFormTest extends TestCase
     public function nameAndEmailFieldsAreRequiredForSavingAContactWithRequired()
     {
         Livewire::test(ContactForm::class)
-            ->set('name', '')
             ->set('email', '')
+            ->set('name', '')
             ->assertHasErrors([
                 'name' => 'required',
-                // 'email' => 'required' // (currently test only works with one key => value pair)
+//                'email' => 'required' // (currently test only works with the last set key => value pair)
             ]);
     }
 
