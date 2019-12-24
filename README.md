@@ -1,78 +1,154 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Livewire Examples
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+This project is created from the examples from on the [Livewire website](https://laravel-livewire.com/).
 
-## About Laravel
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a Laravel project with Livewire installed. The installation is similar to a new Laravel project.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Clone or Download this Project from GitHub
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+See [Cloning a repository](https://help.github.com/en/articles/cloning-a-repository) for details on how to create a 
+local copy of this project on your computer.
 
-## Learning Laravel
+### Install the Dependencies
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The project uses Laravel 6.5, which has a requirement for **PHP 7.2** or higher. 
+ Composer is highly recommended to install the dependencies.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+From the root of the project run composer install from the command line:
 
-## Laravel Sponsors
+```shell script
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Create an .env file
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+Create an `.env` file from `.env.example`
 
-## Contributing
+#### Linux / Mac
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```shell script
+cp .env.example .env
+```
 
-## Code of Conduct
+#### Windows
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell script
+copy .env.example .env
+```
 
-## Security Vulnerabilities
+### Generate an APP_KEY
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```shell script
+php artisan key:generate
+```
+
+### Update the Database Settings
+
+The `Posts` link uses Lorem Ipsum data from a MySQL database or Sqlite database.
+
+#### MySql
+
+For MySql, create a database on your MySql server and add the settings to the
+**.env** file:
+
+```text
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=YourDatabaseName
+DB_USERNAME=YourDatabaseUserName
+DB_PASSWORD=YourDatabaseUserPassword
+```
+
+#### Sqlite
+
+Alternatively create an empty sqlite database and configure Laravel to use Sqlite
+
+##### Sqlite on Linux / Mac
+
+```shell script
+touch database/database.sqlite
+```
+
+##### Sqlite on Windows
+
+```shell script
+fsutil file createnew database/database.sqlite 0
+```
+
+##### Edit the .env file
+
+Edit the **.env** file, add sqlite as the DB_CONNECTION and delete all the other DB\_\* keys.
+
+```sh
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1   }
+DB_PORT=3306        }
+DB_DATABASE=laravel } Delete
+DB_USERNAME=root    }
+DB_PASSWORD=        }
+```
+
+### Create the database
+
+Run the following command to create the database, you choose in your `.env` file and seed the `Posts` table
+ with Lorem Ipsum data:
+
+```shell script
+php artisan migrate --seed
+```
+
+### Sqlite in Memory Testing Database
+
+The `phpunit.xml` file has been configured for Sqlite in memory testing. This requires the pdo_sqlite extension to be 
+ enabled in your `php.ini`. If there are any problems enabling the extension remove the following lines, PHPUnit
+ will then to use the database configured in your `.env` file.
+
+```xml
+<server name="DB_CONNECTION" value="sqlite"/>
+<server name="DB_DATABASE" value=":memory:"/>
+```
+
+### Run all tests
+
+To make it easy to run all the PHPUnit tests a composer script has been created in composer.json. From the root of the
+ projects, use `composer test` or `composer tests`
+
+```shell script
+composer test
+```
+
+### Serve website
+
+To use the php web server, run the following artisan command:
+
+```shell script
+php artisan serve
+```
+
+### Open the website
+
+See the message under the serve command for the website name and port, by default it is:
+
+-   <http://127.0.0.1:8000>
+
+**Laravel with Livewire** will display, with links to the examples from the Livewire site.
+
+* Counter
+* Data Binding
+* Triggering Actions
+* Contact Form
+* Posts
+
+See the Livewire site for details or take a look at the source code.
+
+## Contributions
+
+Feel free to leave comments for improvements. At this point this project is still in development, no contributions
+ to the code is required. Feel free to fork or clone or copy for your own use.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The project is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
